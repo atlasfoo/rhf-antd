@@ -1,0 +1,5 @@
+charset = utf-8
+
+[js,jsx,ts,tsx,json,yaml]
+indent_style = space
+indent_size = 4
