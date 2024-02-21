@@ -10,11 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "antd": "^5.14.1",
+    "formik": "^2.4.5",
+    "formik-antd": "^2.0.4",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
-    "zod": "^3.22.4"
+    "react-json-view-lite": "^1.2.1",
+    "zod": "^3.22.4",
+    "zod-formik-adapter": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
