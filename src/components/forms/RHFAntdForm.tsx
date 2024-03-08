@@ -1,55 +1,46 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Card } from 'antd'
-import { Formik } from 'formik'
-import {
-  Checkbox,
-  Form,
-  FormItem,
-  Input,
-  InputNumber,
-  ResetButton,
-  Select,
-  SubmitButton,
-} from 'formik-antd'
 import { useContext } from 'react'
-import { toFormikValidationSchema } from 'zod-formik-adapter'
+import { FormProvider, useForm } from 'react-hook-form'
 
 import { FormSchema, FormSchemaType } from '../../types/FormSchema'
 import { Fruits } from '../../types/SelectValues'
 import { FormContextType, FormsContext } from '../../views/forms'
+import { Checkbox, FormItem, Input, InputNumber, ResetButton, Select, SubmitButton } from './fields'
 
-const FormikAntdForm = () => {
+const RHFAntdForm = () => {
+  const form = useForm<FormSchemaType>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      check: false,
+      select: 1,
+      longText: '',
+      number: 0,
+    },
+  })
   const { setValues } = useContext(FormsContext) as FormContextType
 
   const onSubmit = (values: FormSchemaType) => {
     console.log(values)
     setValues(values)
-    return Promise.resolve();
+    return Promise.resolve()
   }
   return (
-    <Formik<FormSchemaType>
-      initialValues={{
-        name: '',
-        email: '',
-        password: '',
-        check: false,
-        select: 1,
-        longText: '',
-        number: 0,
-      }}
-      validationSchema={toFormikValidationSchema(FormSchema)}
-      onSubmit={onSubmit}
-    >
-      <Card title="Formik Form">
-        <Form>
+    <FormProvider {...form}>
+      <Card title="RHF Form">
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <Card type="inner">
             <FormItem name="name" label="nombre">
               <Input name="name" />
             </FormItem>
-            <FormItem name="email" label="email">
-              <Input name="email" />
-            </FormItem>
             <FormItem name="password" label="password">
               <Input.Password name="password" />
+            </FormItem>
+            <FormItem name="email" label="email">
+              <Input name="email" />
             </FormItem>
             <FormItem name="check" label="check">
               <Checkbox name="check" />
@@ -71,10 +62,10 @@ const FormikAntdForm = () => {
             <SubmitButton>Send</SubmitButton>
             <ResetButton>Reset</ResetButton>
           </Card>
-        </Form>
+        </form>
       </Card>
-    </Formik>
+    </FormProvider>
   )
 }
 
-export default FormikAntdForm
+export default RHFAntdForm

@@ -11,6 +11,9 @@ dependencies:
   antd:
     specifier: ^5.14.1
     version: 5.14.1(moment@2.30.1)(react-dom@18.2.0)(react@18.2.0)
+  dayjs:
+    specifier: ^1.11.10
+    version: 1.11.10
   formik:
     specifier: ^2.4.5
     version: 2.4.5(react@18.2.0)
@@ -64,6 +67,9 @@ devDependencies:
   eslint-plugin-react-refresh:
     specifier: ^0.4.5
     version: 0.4.5(eslint@8.56.0)
+  eslint-plugin-simple-import-sort:
+    specifier: ^12.0.0
+    version: 12.0.0(eslint@8.56.0)
   typescript:
     specifier: ^5.2.2
     version: 5.3.3
@@ -1232,6 +1238,14 @@ packages:
     resolution: {integrity: sha512-D53FYKJa+fDmZMtriODxvhwrO+IOqrxoEo21gMA0sjHdU6dPVH4OhyFip9ypl8HOF5RV5KdTo+rBQLvnY2cO8w==}
     peerDependencies:
       eslint: '>=7'
+    dependencies:
+      eslint: 8.56.0
+    dev: true
+
+  /eslint-plugin-simple-import-sort@12.0.0(eslint@8.56.0):
+    resolution: {integrity: sha512-8o0dVEdAkYap0Cn5kNeklaKcT1nUsa3LITWEuFk3nJifOoD+5JQGoyDUW2W/iPWwBsNBJpyJS9y4je/BgxLcyQ==}
+    peerDependencies:
+      eslint: '>=5.0.0'
     dependencies:
       eslint: 8.56.0
     dev: true
